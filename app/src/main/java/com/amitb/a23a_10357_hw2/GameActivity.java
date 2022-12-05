@@ -1,0 +1,207 @@
+package com.amitb.a23a_10357_hw2;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageView;
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
+import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.imageview.ShapeableImageView;
+
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class GameActivity extends AppCompatActivity {
+
+    private Vibrator v;
+    private Toast toast;
+    private GameManager GM;
+    private ExtendedFloatingActionButton goLeft;
+    private ExtendedFloatingActionButton goRight;
+    private ShapeableImageView[][] Cones;
+    private ShapeableImageView[][] Wrenches;
+    private ShapeableImageView[] Hearts;
+    private ShapeableImageView[] Cars;
+    private AppCompatImageView background;
+    private Timer timer;
+    private long startTime;
+    private final int DELAY = 1000;
+    private int currentSpot;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_game);
+        currentSpot = 2;
+        findViews();
+        initViews();
+        GM = new GameManager(Hearts.length);
+        goLeft.setOnClickListener(view -> slideLeft());
+        goRight.setOnClickListener(view -> slideRight());
+        timer = new Timer();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        toast.cancel();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        toast.cancel();
+    }
+
+    private void findViews() {
+        background = findViewById(R.id.game_IMG_background);
+        goLeft = findViewById(R.id.game_FAB_goLeft);
+        goRight = findViewById(R.id.game_FAB_goRight);
+        Cars = new ShapeableImageView[]{
+                findViewById(R.id.game_IMG_car0),
+                findViewById(R.id.game_IMG_car1),
+                findViewById(R.id.game_IMG_car2),
+                findViewById(R.id.game_IMG_car3),
+                findViewById(R.id.game_IMG_car4)
+        };
+        Hearts = new ShapeableImageView[]{
+                findViewById(R.id.game_IMG_heart_1),
+                findViewById(R.id.game_IMG_heart_2),
+                findViewById(R.id.game_IMG_heart_3)
+        };
+        Cones = new ShapeableImageView[][]{
+                {findViewById(R.id.game_cone_0_1), findViewById(R.id.game_cone_1_1), findViewById(R.id.game_cone_2_1), findViewById(R.id.game_cone_3_1), findViewById(R.id.game_cone_4_1)},
+                {findViewById(R.id.game_cone_0_2), findViewById(R.id.game_cone_1_2), findViewById(R.id.game_cone_2_2), findViewById(R.id.game_cone_3_2), findViewById(R.id.game_cone_4_2)},
+                {findViewById(R.id.game_cone_0_3), findViewById(R.id.game_cone_1_3), findViewById(R.id.game_cone_2_3), findViewById(R.id.game_cone_3_3), findViewById(R.id.game_cone_4_3)},
+                {findViewById(R.id.game_cone_0_4), findViewById(R.id.game_cone_1_4), findViewById(R.id.game_cone_2_4), findViewById(R.id.game_cone_3_4), findViewById(R.id.game_cone_4_4)},
+                {findViewById(R.id.game_cone_0_5), findViewById(R.id.game_cone_1_5), findViewById(R.id.game_cone_2_5), findViewById(R.id.game_cone_3_5), findViewById(R.id.game_cone_4_5)},
+                {findViewById(R.id.game_cone_0_6), findViewById(R.id.game_cone_1_6), findViewById(R.id.game_cone_2_6), findViewById(R.id.game_cone_3_6), findViewById(R.id.game_cone_4_6)},
+                {findViewById(R.id.game_cone_0_7), findViewById(R.id.game_cone_1_6), findViewById(R.id.game_cone_2_6), findViewById(R.id.game_cone_3_7), findViewById(R.id.game_cone_4_7)}
+        };
+        Wrenches = new ShapeableImageView[][]{
+                {findViewById(R.id.game_wrench_0_1), findViewById(R.id.game_wrench_1_1), findViewById(R.id.game_wrench_2_1), findViewById(R.id.game_wrench_3_1), findViewById(R.id.game_wrench_4_1)},
+                {findViewById(R.id.game_wrench_0_2), findViewById(R.id.game_wrench_1_2), findViewById(R.id.game_wrench_2_2), findViewById(R.id.game_wrench_3_2), findViewById(R.id.game_wrench_4_2)},
+                {findViewById(R.id.game_wrench_0_3), findViewById(R.id.game_wrench_1_3), findViewById(R.id.game_wrench_2_3), findViewById(R.id.game_wrench_3_3), findViewById(R.id.game_wrench_4_3)},
+                {findViewById(R.id.game_wrench_0_4), findViewById(R.id.game_wrench_1_4), findViewById(R.id.game_wrench_2_4), findViewById(R.id.game_wrench_3_4), findViewById(R.id.game_wrench_4_4)},
+                {findViewById(R.id.game_wrench_0_5), findViewById(R.id.game_wrench_1_5), findViewById(R.id.game_wrench_2_5), findViewById(R.id.game_wrench_3_5), findViewById(R.id.game_wrench_4_5)},
+                {findViewById(R.id.game_wrench_0_6), findViewById(R.id.game_wrench_1_6), findViewById(R.id.game_wrench_2_6), findViewById(R.id.game_wrench_3_6), findViewById(R.id.game_wrench_4_6)},
+                {findViewById(R.id.game_wrench_0_7), findViewById(R.id.game_wrench_1_6), findViewById(R.id.game_wrench_2_6), findViewById(R.id.game_wrench_3_7), findViewById(R.id.game_wrench_4_7)}
+        };
+    }
+
+    private void initViews() {
+        Glide
+                .with(this)
+                .load("https://i.imgur.com/8whojL1.png")
+                .centerCrop()
+                .placeholder(R.drawable.ic_launcher_foreground)
+                .into(background);
+
+        startGame();
+    }
+
+
+    private void slideLeft() {
+        if (currentSpot > 0) {
+            Cars[currentSpot].setVisibility(View.INVISIBLE);
+            Cars[currentSpot - 1].setVisibility(View.VISIBLE);
+            currentSpot--;
+        }
+    }
+
+    private void slideRight() {
+        if (currentSpot < Cars.length - 1) {
+            Cars[currentSpot].setVisibility(View.INVISIBLE);
+            Cars[currentSpot + 1].setVisibility(View.VISIBLE);
+            currentSpot++;
+        }
+    }
+
+    private void startGame() {
+        startTime = System.currentTimeMillis();
+        timer = new Timer();
+        timer.scheduleAtFixedRate(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+                        runOnUiThread(() -> GameActivity.this.updateConeLocation());
+                    }
+                }
+                , DELAY, DELAY);
+    }
+
+    private void updateConeLocation() {
+        lowerLocations();
+        initRandomCone();
+        checkHit();
+    }
+
+    private void lowerLocations() {
+        for (int i = Cones.length - 1; i > 0; i--) {
+            for (int j = 0; j < Cones[i].length; j++) {
+                Cones[i][j].setVisibility(Cones[i - 1][j].getVisibility());
+                Wrenches[i][j].setVisibility(Wrenches[i - 1][j].getVisibility());
+            }
+        }
+    }
+
+    private void initRandomCone() {
+        Random rand = new Random();
+        int rnd = rand.nextInt(9);
+        for (int i = 0; i < Cones[0].length; i++) {
+            Cones[0][i].setVisibility(View.INVISIBLE);
+            Wrenches[0][i].setVisibility(View.INVISIBLE);
+        }
+        if (rnd >= 0 && rnd < 5) {
+            Cones[0][rnd].setVisibility(View.VISIBLE);
+        } else if (rnd > 7) {
+            int rnd2 = rand.nextInt(5);
+            Wrenches[0][rnd2].setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void checkHit() {
+        if (Cones[Cones.length - 1][currentSpot].getVisibility() == View.VISIBLE) {
+            GM.updateWrong();
+            if (GM.getWrong() != 0) {
+                Hearts[Hearts.length - GM.getWrong()].setVisibility(View.INVISIBLE);
+            }
+//            else{
+//                openFinishScreen();
+//
+//            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                Log.d("Vibrations", "Vibrate!");
+                v.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
+            } else {
+                v.vibrate(500);
+            }
+            toast.makeText(this, "You just got hit!", Toast.LENGTH_SHORT).show();
+        }
+        if (Wrenches[Wrenches.length - 1][currentSpot].getVisibility() == View.VISIBLE) {
+            GM.obtainLife();
+            if (GM.getWrong() < Hearts.length -1) {
+                Hearts[Hearts.length - GM.getWrong()].setVisibility(View.VISIBLE);
+            }
+            toast.makeText(this, "You just got more lives!", Toast.LENGTH_SHORT).show();
+        }
+
+//    private void openFinishScreen() {
+//        Intent finishIntent = new Intent(this,FinishingActivity.class);
+//        startActivity(finishIntent);
+//        finish();
+//    }
+    }
+
+}
