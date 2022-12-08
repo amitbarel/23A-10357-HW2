@@ -177,9 +177,8 @@ public class GameActivity extends AppCompatActivity {
             if (GM.getWrong() != 0) {
                 Hearts[Hearts.length - GM.getWrong()].setVisibility(View.INVISIBLE);
             }
-//            else{
+//            else {
 //                openFinishScreen();
-//
 //            }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 Log.d("Vibrations", "Vibrate!");
@@ -190,18 +189,17 @@ public class GameActivity extends AppCompatActivity {
             toast.makeText(this, "You just got hit!", Toast.LENGTH_SHORT).show();
         }
         if (Wrenches[Wrenches.length - 1][currentSpot].getVisibility() == View.VISIBLE) {
-            GM.obtainLife();
-            if (GM.getWrong() < Hearts.length -1) {
+            if (GM.getWrong() < Hearts.length - 1) {
                 Hearts[Hearts.length - GM.getWrong()].setVisibility(View.VISIBLE);
             }
+            GM.obtainLife();
             toast.makeText(this, "You just got more lives!", Toast.LENGTH_SHORT).show();
         }
+    }
 
 //    private void openFinishScreen() {
 //        Intent finishIntent = new Intent(this,FinishingActivity.class);
 //        startActivity(finishIntent);
 //        finish();
-//    }
+//        }
     }
-
-}

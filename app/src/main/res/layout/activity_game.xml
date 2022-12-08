@@ -78,8 +78,9 @@
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_0_1"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginTop="36dp"
                     android:layout_marginBottom="12dp"
                     android:layout_marginHorizontal="12dp"
@@ -89,8 +90,9 @@
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_0_2"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginVertical="12dp"
                     android:layout_marginHorizontal="12dp"
                     android:src="@drawable/traffic_cone_128"/>
@@ -98,8 +100,9 @@
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_0_3"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginVertical="12dp"
                     android:layout_marginHorizontal="12dp"
                     android:src="@drawable/traffic_cone_128"/>
@@ -107,8 +110,9 @@
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_0_4"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginVertical="12dp"
                     android:layout_marginHorizontal="12dp"
                     android:src="@drawable/traffic_cone_128"/>
@@ -116,8 +120,9 @@
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_0_5"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginVertical="12dp"
                     android:layout_marginHorizontal="12dp"
                     android:src="@drawable/traffic_cone_128"/>
@@ -125,8 +130,9 @@
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_0_6"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginVertical="12dp"
                     android:layout_marginHorizontal="12dp"
                     android:src="@drawable/traffic_cone_128"/>
@@ -134,8 +140,9 @@
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_0_7"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginVertical="12dp"
                     android:layout_marginHorizontal="12dp"
                     android:src="@drawable/traffic_cone_128"/>
@@ -151,8 +158,9 @@
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_1_1"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginTop="36dp"
                     android:layout_marginBottom="12dp"
                     android:layout_marginHorizontal="12dp"
@@ -161,8 +169,9 @@
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_1_2"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginVertical="12dp"
                     android:layout_marginHorizontal="12dp"
                     android:src="@drawable/traffic_cone_128"/>
@@ -170,8 +179,9 @@
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_1_3"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginVertical="12dp"
                     android:layout_marginHorizontal="12dp"
                     android:src="@drawable/traffic_cone_128"/>
@@ -179,8 +189,9 @@
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_1_4"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginVertical="12dp"
                     android:layout_marginHorizontal="12dp"
                     android:src="@drawable/traffic_cone_128"/>
@@ -188,8 +199,9 @@
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_1_5"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginVertical="12dp"
                     android:layout_marginHorizontal="12dp"
                     android:src="@drawable/traffic_cone_128"/>
@@ -197,8 +209,9 @@
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_1_6"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginVertical="12dp"
                     android:layout_marginHorizontal="12dp"
                     android:src="@drawable/traffic_cone_128"/>
@@ -206,8 +219,9 @@
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_1_7"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginVertical="12dp"
                     android:layout_marginHorizontal="12dp"
                     android:src="@drawable/traffic_cone_128"/>
@@ -223,8 +237,9 @@
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_2_1"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginTop="36dp"
                     android:layout_marginBottom="12dp"
                     android:layout_marginHorizontal="12dp"
@@ -233,48 +248,54 @@
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_2_2"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/traffic_cone_128"/>
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_2_3"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin ="12dp"
                     android:src="@drawable/traffic_cone_128" />
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_2_4"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/traffic_cone_128"/>
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_2_5"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/traffic_cone_128"/>
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_2_6"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/traffic_cone_128"/>
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_2_7"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/traffic_cone_128"/>
 
@@ -289,8 +310,9 @@
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_3_1"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginTop="36dp"
                     android:layout_marginBottom="12dp"
                     android:layout_marginHorizontal="12dp"
@@ -299,48 +321,54 @@
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_3_2"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/traffic_cone_128"/>
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_3_3"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/traffic_cone_128" />
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_3_4"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/traffic_cone_128"/>
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_3_5"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/traffic_cone_128"/>
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_3_6"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/traffic_cone_128"/>
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_3_7"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/traffic_cone_128"/>
 
@@ -355,8 +383,9 @@
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_4_1"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginTop="36dp"
                     android:layout_marginBottom="12dp"
                     android:layout_marginHorizontal="12dp"
@@ -365,48 +394,54 @@
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_4_2"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/traffic_cone_128"/>
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_4_3"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/traffic_cone_128" />
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_4_4"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/traffic_cone_128"/>
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_4_5"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/traffic_cone_128"/>
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_4_6"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/traffic_cone_128"/>
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_cone_4_7"
                     android:visibility="invisible"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/traffic_cone_128"/>
 
@@ -425,7 +460,8 @@
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_wrench_0_1"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginTop="36dp"
                     android:layout_marginBottom="12dp"
                     android:layout_marginHorizontal="12dp"
@@ -436,7 +472,8 @@
                     android:id="@+id/game_wrench_0_2"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginVertical="12dp"
                     android:layout_marginHorizontal="12dp"
                     android:src="@drawable/wrench"/>
@@ -445,7 +482,8 @@
                     android:id="@+id/game_wrench_0_3"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginVertical="12dp"
                     android:layout_marginHorizontal="12dp"
                     android:src="@drawable/wrench"/>
@@ -454,7 +492,8 @@
                     android:id="@+id/game_wrench_0_4"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginVertical="12dp"
                     android:layout_marginHorizontal="12dp"
                     android:src="@drawable/wrench"/>
@@ -463,7 +502,8 @@
                     android:id="@+id/game_wrench_0_5"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginVertical="12dp"
                     android:layout_marginHorizontal="12dp"
                     android:src="@drawable/wrench"/>
@@ -472,7 +512,8 @@
                     android:id="@+id/game_wrench_0_6"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginVertical="12dp"
                     android:layout_marginHorizontal="12dp"
                     android:src="@drawable/wrench"/>
@@ -481,7 +522,8 @@
                     android:id="@+id/game_wrench_0_7"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginVertical="12dp"
                     android:layout_marginHorizontal="12dp"
                     android:src="@drawable/wrench"/>
@@ -497,7 +539,8 @@
                     android:id="@+id/game_wrench_1_1"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginTop="36dp"
                     android:layout_marginBottom="12dp"
                     android:layout_marginHorizontal="12dp"
@@ -507,7 +550,8 @@
                     android:id="@+id/game_wrench_1_2"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginVertical="12dp"
                     android:layout_marginHorizontal="12dp"
                     android:src="@drawable/wrench"/>
@@ -516,7 +560,8 @@
                     android:id="@+id/game_wrench_1_3"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginVertical="12dp"
                     android:layout_marginHorizontal="12dp"
                     android:src="@drawable/wrench"/>
@@ -525,7 +570,8 @@
                     android:id="@+id/game_wrench_1_4"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginVertical="12dp"
                     android:layout_marginHorizontal="12dp"
                     android:src="@drawable/wrench"/>
@@ -534,7 +580,8 @@
                     android:id="@+id/game_wrench_1_5"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginVertical="12dp"
                     android:layout_marginHorizontal="12dp"
                     android:src="@drawable/wrench"/>
@@ -543,7 +590,8 @@
                     android:id="@+id/game_wrench_1_6"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginVertical="12dp"
                     android:layout_marginHorizontal="12dp"
                     android:src="@drawable/wrench"/>
@@ -552,7 +600,8 @@
                     android:id="@+id/game_wrench_1_7"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginVertical="12dp"
                     android:layout_marginHorizontal="12dp"
                     android:src="@drawable/wrench"/>
@@ -568,7 +617,8 @@
                     android:id="@+id/game_wrench_2_1"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginTop="36dp"
                     android:layout_marginBottom="12dp"
                     android:layout_marginHorizontal="12dp"
@@ -578,7 +628,8 @@
                     android:id="@+id/game_wrench_2_2"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/wrench"/>
 
@@ -586,7 +637,8 @@
                     android:id="@+id/game_wrench_2_3"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin ="12dp"
                     android:src="@drawable/wrench" />
 
@@ -594,7 +646,8 @@
                     android:id="@+id/game_wrench_2_4"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/wrench"/>
 
@@ -602,7 +655,8 @@
                     android:id="@+id/game_wrench_2_5"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/wrench"/>
 
@@ -610,7 +664,8 @@
                     android:id="@+id/game_wrench_2_6"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/wrench"/>
 
@@ -618,7 +673,8 @@
                     android:id="@+id/game_wrench_2_7"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/wrench"/>
 
@@ -633,7 +689,8 @@
                     android:id="@+id/game_wrench_3_1"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginTop="36dp"
                     android:layout_marginBottom="12dp"
                     android:layout_marginHorizontal="12dp"
@@ -643,7 +700,8 @@
                     android:id="@+id/game_wrench_3_2"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/wrench"/>
 
@@ -651,7 +709,8 @@
                     android:id="@+id/game_wrench_3_3"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/wrench" />
 
@@ -659,7 +718,8 @@
                     android:id="@+id/game_wrench_3_4"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/wrench"/>
 
@@ -675,7 +735,8 @@
                     android:id="@+id/game_wrench_3_6"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/wrench"/>
 
@@ -683,7 +744,8 @@
                     android:id="@+id/game_wrench_3_7"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/wrench"/>
 
@@ -698,7 +760,8 @@
                     android:id="@+id/game_wrench_4_1"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginTop="36dp"
                     android:layout_marginBottom="12dp"
                     android:layout_marginHorizontal="12dp"
@@ -708,7 +771,8 @@
                     android:id="@+id/game_wrench_4_2"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/wrench"/>
 
@@ -716,7 +780,8 @@
                     android:id="@+id/game_wrench_4_3"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/wrench" />
 
@@ -724,7 +789,8 @@
                     android:id="@+id/game_wrench_4_4"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/wrench"/>
 
@@ -732,7 +798,8 @@
                     android:id="@+id/game_wrench_4_5"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/wrench"/>
 
@@ -740,7 +807,8 @@
                     android:id="@+id/game_wrench_4_6"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/wrench"/>
 
@@ -748,7 +816,8 @@
                     android:id="@+id/game_wrench_4_7"
                     android:visibility="invisible"
                     android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_margin="12dp"
                     android:src="@drawable/wrench"/>
 
