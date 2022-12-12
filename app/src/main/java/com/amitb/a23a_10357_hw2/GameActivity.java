@@ -23,9 +23,13 @@ import java.util.TimerTask;
 
 public class GameActivity extends AppCompatActivity {
 
+    public static final String KEY_SPEED = "KEY_SPEED";
+    public static final String KEY_MODE = "KEY_MODE";
+    private final int MULT = 3;
+
     private Vibrator v;
-    private Toast toast;
     private GameManager GM;
+    private Toast toast;
     private ExtendedFloatingActionButton goLeft;
     private ExtendedFloatingActionButton goRight;
     private ShapeableImageView[][] Cones;
@@ -35,7 +39,7 @@ public class GameActivity extends AppCompatActivity {
     private AppCompatImageView background;
     private Timer timer;
     private long startTime;
-    private final int DELAY = 1000;
+    private int DELAY = 1000;
     private int currentSpot;
 
     @Override
@@ -49,20 +53,30 @@ public class GameActivity extends AppCompatActivity {
         GM = new GameManager(Hearts.length);
         goLeft.setOnClickListener(view -> slideLeft());
         goRight.setOnClickListener(view -> slideRight());
+        Intent previousIntent = getIntent();
+        String speed = previousIntent.getStringExtra(KEY_SPEED);
+        String mode = previousIntent.getStringExtra(KEY_MODE);
+        if(mode == "arrows" && speed == "fast"){
+            DELAY = 500;
+        }else if (mode == "sensors"){
+            goLeft.setVisibility(View.INVISIBLE);
+            goRight.setVisibility(View.INVISIBLE);
+        }
         timer = new Timer();
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        toast.cancel();
-    }
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        toast.cancel();
+//    }
 
     @Override
     protected void onStop() {
         super.onStop();
-        toast.cancel();
-    }
+        if(toast != null)
+            toast.cancel();
+     }
 
     private void findViews() {
         background = findViewById(R.id.game_IMG_background);
@@ -128,23 +142,25 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+    private boolean isFinish = false;
     private void startGame() {
         startTime = System.currentTimeMillis();
         timer = new Timer();
-        timer.scheduleAtFixedRate(
-                new TimerTask() {
-                    @Override
-                    public void run() {
-                        runOnUiThread(() -> GameActivity.this.updateConeLocation());
+            timer.scheduleAtFixedRate(
+                    new TimerTask() {
+                        @Override
+                        public void run() {
+                            if(!isFinish)
+                                runOnUiThread(() -> GameActivity.this.updateConeLocation());
+                        }
                     }
-                }
-                , DELAY, DELAY);
+                    , DELAY, DELAY);
     }
 
     private void updateConeLocation() {
+        checkHit();
         lowerLocations();
         initRandomCone();
-        checkHit();
     }
 
     private void lowerLocations() {
@@ -174,12 +190,14 @@ public class GameActivity extends AppCompatActivity {
     private void checkHit() {
         if (Cones[Cones.length - 1][currentSpot].getVisibility() == View.VISIBLE) {
             GM.updateWrong();
-            if (GM.getWrong() != 0) {
+            if (GM.getWrong() != GM.getLife()) {
                 Hearts[Hearts.length - GM.getWrong()].setVisibility(View.INVISIBLE);
+                Log.d("wrongs: ", "" + GM.getWrong());
             }
-//            else {
-//                openFinishScreen();
-//            }
+            else if (GM.getWrong() == GM.getLife()){
+               openFinishScreen();
+               return;
+            }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 Log.d("Vibrations", "Vibrate!");
                 v.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
@@ -189,7 +207,7 @@ public class GameActivity extends AppCompatActivity {
             toast.makeText(this, "You just got hit!", Toast.LENGTH_SHORT).show();
         }
         if (Wrenches[Wrenches.length - 1][currentSpot].getVisibility() == View.VISIBLE) {
-            if (GM.getWrong() < Hearts.length - 1) {
+            if (GM.getWrong() < GM.getLife() && GM.getWrong() > 0) {
                 Hearts[Hearts.length - GM.getWrong()].setVisibility(View.VISIBLE);
             }
             GM.obtainLife();
@@ -197,9 +215,15 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-//    private void openFinishScreen() {
-//        Intent finishIntent = new Intent(this,FinishingActivity.class);
-//        startActivity(finishIntent);
-//        finish();
-//        }
+    private void openFinishScreen() {
+        //flag to stop the timer action
+        isFinish = true;
+        int now = (int) ((System.currentTimeMillis()-startTime)/1000);
+        timer.cancel();
+        String score = ""+ (now * MULT);
+        Intent finishIntent = new Intent(this,FinishingActivity.class);
+        finishIntent.putExtra(FinishingActivity.KEY_SCORE,"" + score);
+        startActivity(finishIntent);
+        GameActivity.this.finish();
+        }
     }

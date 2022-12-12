@@ -13,16 +13,33 @@ public class OpeningActivity extends AppCompatActivity {
     private MaterialButton arrows_fast;
     private MaterialButton sensors;
 
+    private String mode;
+    private String speed;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opening);
         findViews();
         arrows_slow.setOnClickListener(view -> start());
+        arrows_fast.setOnClickListener(view -> start());
+        sensors.setOnClickListener(view -> start());
     }
 
     private void start() {
+        if (arrows_slow.isChecked() || arrows_fast.isChecked()){
+            mode = "arrows";
+            if(arrows_slow.isChecked()){
+                speed = "slow";
+            }else{
+                speed = "fast";
+            }
+        }else if (sensors.isChecked()){
+            mode = "sensors";
+        }
         Intent gameIntent = new Intent(this,GameActivity.class);
+        gameIntent.putExtra(GameActivity.KEY_MODE,mode);
+        gameIntent.putExtra(GameActivity.KEY_SPEED,speed);
         startActivity(gameIntent);
         finish();
     }

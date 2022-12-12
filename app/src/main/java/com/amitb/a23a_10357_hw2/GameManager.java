@@ -12,18 +12,19 @@ public class GameManager {
         return wrong;
     }
 
+    public int getLife() {
+        return life;
+    }
+
     public void updateWrong(){
-        if(wrong<life)
+        if(wrong<life){
             this.wrong++;
+        }
     }
 
     public void obtainLife(){
         if(wrong > 0){
             this.wrong--;
         }
-    }
-
-    public boolean isLose(){
-        return life == wrong;
     }
 }
