@@ -49,10 +49,15 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
         currentSpot = 2;
         findViews();
+        initGame();
         initViews();
         GM = new GameManager(Hearts.length);
         goLeft.setOnClickListener(view -> slideLeft());
         goRight.setOnClickListener(view -> slideRight());
+        timer = new Timer();
+    }
+
+    private void initGame() {
         Intent previousIntent = getIntent();
         String speed = previousIntent.getStringExtra(KEY_SPEED);
         String mode = previousIntent.getStringExtra(KEY_MODE);
@@ -62,14 +67,7 @@ public class GameActivity extends AppCompatActivity {
             goLeft.setVisibility(View.INVISIBLE);
             goRight.setVisibility(View.INVISIBLE);
         }
-        timer = new Timer();
     }
-
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        toast.cancel();
-//    }
 
     @Override
     protected void onStop() {
