@@ -113,7 +113,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        int lanes = R.drawable.lanes;
+        int lanes = R.drawable.lanes_v2;
         Glide.with(this).load(lanes).optionalCenterCrop().into(background);
         startGame();
     }
