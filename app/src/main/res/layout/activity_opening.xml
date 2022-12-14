@@ -51,6 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:textColor="@color/white"
             app:cornerRadius="16dp"
             android:backgroundTint="@color/red_300"
             android:text="Arrows" />
@@ -64,6 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:cornerRadius="16dp"
+            android:textColor="@color/white"
             android:layout_centerInParent="true"
             android:backgroundTint="@color/red_300"
             android:text="Sensors" />

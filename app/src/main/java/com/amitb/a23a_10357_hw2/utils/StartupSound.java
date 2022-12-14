@@ -17,7 +17,7 @@ public class StartupSound extends AsyncTask<Void,Void,Void> {
     @Override
     protected Void doInBackground(Void... params) {
         MediaPlayer mediaPlayer = MediaPlayer.create(this.context, R.raw.startup);
-        mediaPlayer.setLooping(false);
+        mediaPlayer.setLooping(true);
         mediaPlayer.setVolume(1.0f,1.0f);
         mediaPlayer.start();
         return null;

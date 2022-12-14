@@ -7,11 +7,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ToggleButton;
 
+import com.amitb.a23a_10357_hw2.utils.StartupSound;
 import com.bumptech.glide.Glide;
 import com.google.android.material.button.MaterialButton;
 
 public class OpeningActivity extends AppCompatActivity {
 
+    private StartupSound sound;
     private ToggleButton speedTGL;
     private MaterialButton arrows_BTN;
     private MaterialButton sensors_BTN;
@@ -26,6 +28,19 @@ public class OpeningActivity extends AppCompatActivity {
         initViews();
         arrows_BTN.setOnClickListener(view -> startArrows());
         sensors_BTN.setOnClickListener(view -> startSensors());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        sound = new StartupSound(this);
+        sound.execute();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        sound.cancel(true);
     }
 
     private void initViews() {
