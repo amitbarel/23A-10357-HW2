@@ -27,7 +27,6 @@ public class ListFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list,container,false);
-        findViews(view);
         user1.setOnClickListener(v -> user1Clicked());
         return view;
     }
@@ -37,8 +36,4 @@ public class ListFragment extends Fragment {
             callback.user("Amit");
     }
 
-    private void findViews(View view) {
-        title = view.findViewById(R.id.list_LBL_title);
-        user1 = view.findViewById(R.id.list_btn_user1);
-    }
 }

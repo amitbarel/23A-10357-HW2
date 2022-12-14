@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
 
+import java.util.Locale;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -26,7 +27,6 @@ public class GameActivity extends AppCompatActivity {
     public static final String KEY_SPEED = "KEY_SPEED";
     public static final String KEY_MODE = "KEY_MODE";
     private final int MULT = 3;
-
     private Vibrator v;
     private GameManager GM;
     private Toast toast;
@@ -37,9 +37,10 @@ public class GameActivity extends AppCompatActivity {
     private ShapeableImageView[] Hearts;
     private ShapeableImageView[] Cars;
     private AppCompatImageView background;
+    private int DELAY = 1000;
+    private boolean isFinish = false;
     private Timer timer;
     private long startTime;
-    private int DELAY = 1000;
     private int currentSpot;
 
     @Override
@@ -52,20 +53,21 @@ public class GameActivity extends AppCompatActivity {
         initGame();
         initViews();
         GM = new GameManager(Hearts.length);
-        goLeft.setOnClickListener(view -> slideLeft());
-        goRight.setOnClickListener(view -> slideRight());
-        timer = new Timer();
     }
 
     private void initGame() {
         Intent previousIntent = getIntent();
-        String speed = previousIntent.getStringExtra(KEY_SPEED);
-        String mode = previousIntent.getStringExtra(KEY_MODE);
-        if(mode == "arrows" && speed == "fast"){
-            DELAY = 500;
-        }else if (mode == "sensors"){
+        String speed = previousIntent.getExtras().getString(KEY_SPEED).toLowerCase();
+        String mode = previousIntent.getExtras().getString(KEY_MODE).toLowerCase();
+        if(mode.equals("arrows")){
+            goLeft.setOnClickListener(view -> slideLeft());
+            goRight.setOnClickListener(view -> slideRight());
+            if (speed.equals("fast"))
+                DELAY = 750;
+        }else if (mode.equals("sensors")){
             goLeft.setVisibility(View.INVISIBLE);
             goRight.setVisibility(View.INVISIBLE);
+            initSensorsDeployment();
         }
     }
 
@@ -118,6 +120,9 @@ public class GameActivity extends AppCompatActivity {
         startGame();
     }
 
+    private void initSensorsDeployment() {
+
+    }
 
     private void slideLeft() {
         if (currentSpot > 0) {
@@ -135,7 +140,7 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-    private boolean isFinish = false;
+
     private void startGame() {
         startTime = System.currentTimeMillis();
         timer = new Timer();
@@ -172,7 +177,7 @@ public class GameActivity extends AppCompatActivity {
             Cones[0][i].setVisibility(View.INVISIBLE);
             Wrenches[0][i].setVisibility(View.INVISIBLE);
         }
-        if (rnd >= 0 && rnd < 5) {
+        if (rnd < 5) {
             Cones[0][rnd].setVisibility(View.VISIBLE);
         } else if (rnd > 7) {
             int rnd2 = rand.nextInt(5);

@@ -24,46 +24,50 @@
         android:textColor="@color/black"
         android:textSize="28sp" />
 
+
+    <ToggleButton
+        android:id="@+id/opening_toggle_speed"
+        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/opening_txt_header"
+        android:layout_centerInParent="true"
+        android:backgroundTint="@color/red_300"
+        android:textColor="@color/white"
+        android:textOff="slow"
+        android:textOn="fast"
+        android:textSize="16sp"
+        android:translationZ="5dp" />
     <LinearLayout
-        android:id="@+id/arrows_layout"
+        android:id="@+id/opening_options"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_centerInParent="true"
-        android:layout_below="@id/opening_txt_header">
+        android:layout_below="@id/opening_toggle_speed">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/opening_button_arrows_mode_1"
+            android:id="@+id/opening_BTN_arrows"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/opening_txt_header"
             android:layout_centerInParent="true"
-            android:backgroundTint="@color/blue_300"
-            android:text="Arrows - Slow" />
+            app:cornerRadius="16dp"
+            android:backgroundTint="@color/red_300"
+            android:text="Arrows" />
 
         <View
-            android:layout_width="16dp"
+            android:layout_width="66dp"
             android:layout_height="match_parent"/>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/opening_button_arrows_mode_2"
+            android:id="@+id/opening_BTN_sensors"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/opening_txt_header"
+            app:cornerRadius="16dp"
             android:layout_centerInParent="true"
-            android:backgroundTint="@color/blue_300"
-            android:text="Arrows - Fast" />
+            android:backgroundTint="@color/red_300"
+            android:text="Sensors" />
 
     </LinearLayout>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/opening_button_sensor_mode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/arrows_layout"
-        android:layout_centerInParent="true"
-        android:backgroundTint="@color/blue_300"
-        android:text="Sensors" />
-
 
 </RelativeLayout>

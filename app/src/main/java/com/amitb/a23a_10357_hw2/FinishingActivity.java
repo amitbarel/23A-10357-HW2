@@ -33,12 +33,12 @@ public class FinishingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finishing);
-        listFragment = new ListFragment();
-        mapFragment = new MapFragment();
-        listFragment.setCallback(callBack);
+//        listFragment = new ListFragment();
+//        mapFragment = new MapFragment();
+//        listFragment.setCallback(callBack);
         findViews();
-        getSupportFragmentManager().beginTransaction().add(R.id.main_FRAME_upper,listFragment).commit();
-        getSupportFragmentManager().beginTransaction().add(R.id.main_FRAME_lower,mapFragment).commit();
+//        getSupportFragmentManager().beginTransaction().add(R.id.main_FRAME_upper,listFragment).commit();
+//        getSupportFragmentManager().beginTransaction().add(R.id.main_FRAME_lower,mapFragment).commit();
         Intent previousIntent = getIntent();
         String score = previousIntent.getStringExtra(KEY_SCORE);
         score_LBL.setText("Your score is: " + score);

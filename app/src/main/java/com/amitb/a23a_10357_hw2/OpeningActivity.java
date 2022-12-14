@@ -5,19 +5,18 @@ import androidx.appcompat.widget.AppCompatImageView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ToggleButton;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.button.MaterialButton;
 
 public class OpeningActivity extends AppCompatActivity {
 
-    private MaterialButton arrows_slow;
-    private MaterialButton arrows_fast;
-    private MaterialButton sensors;
+    private ToggleButton speedTGL;
+    private MaterialButton arrows_BTN;
+    private MaterialButton sensors_BTN;
     private AppCompatImageView car_gif;
 
-    private String mode;
-    private String speed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +24,8 @@ public class OpeningActivity extends AppCompatActivity {
         setContentView(R.layout.activity_opening);
         findViews();
         initViews();
-        arrows_slow.setOnClickListener(view -> start());
-        arrows_fast.setOnClickListener(view -> start());
-        sensors.setOnClickListener(view -> start());
+        arrows_BTN.setOnClickListener(view -> startArrows());
+        sensors_BTN.setOnClickListener(view -> startSensors());
     }
 
     private void initViews() {
@@ -35,28 +33,26 @@ public class OpeningActivity extends AppCompatActivity {
         Glide.with(this).load(car_res).into(car_gif);
     }
 
-    private void start() {
-        if (arrows_slow.isChecked() || arrows_fast.isChecked()){
-            mode = "arrows";
-            if(arrows_slow.isChecked()){
-                speed = "slow";
-            }else{
-                speed = "fast";
-            }
-        }else if (sensors.isChecked()){
-            mode = "sensors";
-        }
-        Intent gameIntent = new Intent(this,GameActivity.class);
-        gameIntent.putExtra(GameActivity.KEY_MODE,mode);
-        gameIntent.putExtra(GameActivity.KEY_SPEED,speed);
-        startActivity(gameIntent);
+    private void startArrows() {
+        Intent arrowsIntent = new Intent(this,GameActivity.class);
+        arrowsIntent.putExtra(GameActivity.KEY_MODE,arrows_BTN.getText().toString());
+        arrowsIntent.putExtra(GameActivity.KEY_SPEED,speedTGL.getText());
+        startActivity(arrowsIntent);
+        finish();
+    }
+
+    private void startSensors() {
+        Intent sensorsIntent = new Intent(this,GameActivity.class);
+        sensorsIntent.putExtra(GameActivity.KEY_MODE,sensors_BTN.getText().toString());
+        sensorsIntent.putExtra(GameActivity.KEY_SPEED,speedTGL.getText());
+        startActivity(sensorsIntent);
         finish();
     }
 
     private void findViews() {
         car_gif = findViewById(R.id.opening_gif);
-        arrows_slow = findViewById(R.id.opening_button_arrows_mode_1);
-        arrows_fast = findViewById(R.id.opening_button_arrows_mode_2);
-        sensors = findViewById(R.id.opening_button_sensor_mode);
+        speedTGL = findViewById(R.id.opening_toggle_speed);
+        arrows_BTN = findViewById(R.id.opening_BTN_arrows);
+        sensors_BTN = findViewById(R.id.opening_BTN_sensors);
     }
 }
