@@ -14,7 +14,6 @@ public class StepDetector {
     private SensorManager sensorManager;
     private Sensor sensor;
 
-    private int stepCounterX = 0;
     private long timeStamp = 0;
     private SensorEventListener sensorEventListener;
 
@@ -43,15 +42,13 @@ public class StepDetector {
     private void calculateStep(float x) {
         if (System.currentTimeMillis() - timeStamp > 500) {
             timeStamp = System.currentTimeMillis();
-            if (x > 8.0) {
-                stepCounterX++;
+            if (x > 3.0) {
                 if (stepCallBack != null)
-                    stepCallBack.stepX();
+                    stepCallBack.stepLeft();
             }
-            else if (x < -8.0) {
-                stepCounterX++;
+            else if (x < -3.0) {
                 if (stepCallBack != null)
-                    stepCallBack.stepX();
+                    stepCallBack.stepRight();
             }
         }
     }
@@ -63,10 +60,6 @@ public class StepDetector {
 
     public void stop(){
         sensorManager.unregisterListener(sensorEventListener,sensor);
-    }
-
-    public int getStepCountX() {
-        return stepCounterX;
     }
 
 }

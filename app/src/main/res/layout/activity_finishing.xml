@@ -17,17 +17,27 @@
         android:layout_centerInParent="true"/>
 
     <FrameLayout
-        android:id="@+id/main_FRAME_upper"
+        android:id="@+id/upper_frame"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="4"
         android:background="@color/blue_300"/>
 
-    <FrameLayout
-        android:id="@+id/main_FRAME_lower"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="0.5">
+
+
+
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/lower_frame"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
         android:background="@color/asphalt_gray"/>
 
 

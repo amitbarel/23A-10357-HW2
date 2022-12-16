@@ -11,8 +11,13 @@ import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.amitb.a23a_10357_hw2.interfaces.StepCallBack;
+import com.amitb.a23a_10357_hw2.utils.CrashSound;
+import com.amitb.a23a_10357_hw2.utils.StepDetector;
+import com.amitb.a23a_10357_hw2.utils.SuccessSound;
 import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
@@ -27,8 +32,12 @@ public class GameActivity extends AppCompatActivity {
     public static final String KEY_SPEED = "KEY_SPEED";
     public static final String KEY_MODE = "KEY_MODE";
     private final int MULT = 3;
+
     private Vibrator v;
     private GameManager GM;
+    private SuccessSound successSound;
+    private CrashSound crashSound;
+    private StepDetector stepDetector;
     private Toast toast;
     private ExtendedFloatingActionButton goLeft;
     private ExtendedFloatingActionButton goRight;
@@ -48,6 +57,7 @@ public class GameActivity extends AppCompatActivity {
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        getWindow().addFlags (WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         currentSpot = 2;
         findViews();
         initGame();
@@ -55,28 +65,51 @@ public class GameActivity extends AppCompatActivity {
         GM = new GameManager(Hearts.length);
     }
 
-    private void initGame() {
-        Intent previousIntent = getIntent();
-        String speed = previousIntent.getExtras().getString(KEY_SPEED).toLowerCase();
-        String mode = previousIntent.getExtras().getString(KEY_MODE).toLowerCase();
-        if(mode.equals("arrows")){
-            goLeft.setOnClickListener(view -> slideLeft());
-            goRight.setOnClickListener(view -> slideRight());
-            if (speed.equals("fast"))
-                DELAY = 750;
-        }else if (mode.equals("sensors")){
-            goLeft.setVisibility(View.INVISIBLE);
-            goRight.setVisibility(View.INVISIBLE);
-            initSensorsDeployment();
-        }
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        if(toast != null)
+        if(toast != null) {
             toast.cancel();
-     }
+        }
+        if (stepDetector != null)
+            stepDetector.stop();
+    }
+
+    private void initGame() {
+        Intent previousIntent = getIntent();
+        String speed = previousIntent.getExtras().getString(KEY_SPEED).toLowerCase();
+        String mode = previousIntent.getExtras().getString(KEY_MODE).toLowerCase();
+        if(mode.equalsIgnoreCase("arrows")){
+            goLeft.setOnClickListener(view -> slideLeft());
+            goRight.setOnClickListener(view -> slideRight());
+            if (speed.equalsIgnoreCase("fast"))
+                DELAY = 600;
+        }else if (mode.equalsIgnoreCase("sensors")){
+            initStepDetector();
+            stepDetector.start();
+            goLeft.setVisibility(View.INVISIBLE);
+            goRight.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    private void initStepDetector() {
+        stepDetector = new StepDetector(this, new StepCallBack() {
+            @Override
+            public void stepLeft() {
+                slideLeft();
+            }
+
+            @Override
+            public void stepRight() {
+                slideRight();
+            }
+        });
+    }
 
     private void findViews() {
         background = findViewById(R.id.game_IMG_background);
@@ -120,9 +153,6 @@ public class GameActivity extends AppCompatActivity {
         startGame();
     }
 
-    private void initSensorsDeployment() {
-
-    }
 
     private void slideLeft() {
         if (currentSpot > 0) {
@@ -188,9 +218,10 @@ public class GameActivity extends AppCompatActivity {
     private void checkHit() {
         if (Cones[Cones.length - 1][currentSpot].getVisibility() == View.VISIBLE) {
             GM.updateWrong();
+            crashSound = new CrashSound(this);
+            crashSound.execute();
             if (GM.getWrong() != GM.getLife()) {
                 Hearts[Hearts.length - GM.getWrong()].setVisibility(View.INVISIBLE);
-                Log.d("wrongs: ", "" + GM.getWrong());
             }
             else if (GM.getWrong() == GM.getLife()){
                openFinishScreen();
@@ -208,6 +239,8 @@ public class GameActivity extends AppCompatActivity {
             if (GM.getWrong() < GM.getLife() && GM.getWrong() > 0) {
                 Hearts[Hearts.length - GM.getWrong()].setVisibility(View.VISIBLE);
             }
+            successSound = new SuccessSound(this);
+            successSound.execute();
             GM.obtainLife();
             toast.makeText(this, "You just got more lives!", Toast.LENGTH_SHORT).show();
         }

@@ -14,9 +14,10 @@ import com.amitb.a23a_10357_hw2.R;
 import com.amitb.a23a_10357_hw2.interfaces.CallBack_userProtocol;
 import com.google.android.material.textview.MaterialTextView;
 
+import java.util.ArrayList;
+
 public class ListFragment extends Fragment {
-    private MaterialTextView title;
-    private Button user1;
+    private ArrayList<String> records = new ArrayList<>();
     private CallBack_userProtocol callback;
 
     public void setCallback(CallBack_userProtocol callback){
@@ -27,13 +28,7 @@ public class ListFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list,container,false);
-        user1.setOnClickListener(v -> user1Clicked());
         return view;
-    }
-
-    private void user1Clicked() {
-        if (callback != null)
-            callback.user("Amit");
     }
 
 }

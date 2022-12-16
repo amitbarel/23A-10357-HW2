@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,22 +16,18 @@ import com.amitb.a23a_10357_hw2.R;
 import com.google.android.material.textview.MaterialTextView;
 
 
-public class MapFragment extends Fragment {
+public class MapFragment extends Fragment implements OnMapReadyCallback {
     private MaterialTextView title;
     @Nullable
-    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_map,container,false);
-        findViews(view);
+        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.google_map);
+        mapFragment.getMapAsync(this);
         return view;
     }
 
-    private void findViews(View view) {
-        title = view.findViewById(R.id.map_LBL_title);
-    }
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
 
-
-    public void zoom(Double latitude, Double longitude) {
-        title.setText(latitude + "\n" + longitude);
     }
 }

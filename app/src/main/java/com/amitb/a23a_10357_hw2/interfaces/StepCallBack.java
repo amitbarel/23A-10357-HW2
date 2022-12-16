@@ -1,5 +1,6 @@
 package com.amitb.a23a_10357_hw2.interfaces;
 
 public interface StepCallBack {
-    void stepX();
+    void stepLeft();
+    void stepRight();
 }
