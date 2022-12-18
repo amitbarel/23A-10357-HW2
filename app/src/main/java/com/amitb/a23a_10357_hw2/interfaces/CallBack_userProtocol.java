@@ -1,5 +1,10 @@
 package com.amitb.a23a_10357_hw2.interfaces;
 
+import com.amitb.a23a_10357_hw2.Player;
+
+import java.util.ArrayList;
+
 public interface CallBack_userProtocol {
-    void user(String name);
+    void sendLoc(double latitude, double longitude);
+    void showTop5(ArrayList<Player> players);
 }

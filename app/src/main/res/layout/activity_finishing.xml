@@ -23,16 +23,6 @@
         android:layout_weight="4"
         android:background="@color/blue_300"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5">
-
-
-
-
-    </LinearLayout>
-
     <FrameLayout
         android:id="@+id/lower_frame"
         android:layout_width="match_parent"

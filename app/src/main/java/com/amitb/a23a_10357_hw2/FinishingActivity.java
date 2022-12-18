@@ -8,22 +8,30 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.amitb.a23a_10357_hw2.interfaces.CallBack_userProtocol;
+import com.amitb.a23a_10357_hw2.utils.DataManager;
 import com.amitb.a23a_10357_hw2.views.ListFragment;
 import com.amitb.a23a_10357_hw2.views.MapFragment;
+
+import java.util.ArrayList;
 
 public class FinishingActivity extends AppCompatActivity {
 
     public static final String KEY_SCORE = "KEY_SCORE";
     private TextView score_LBL;
-    private FrameLayout lower;
     private ListFragment listFragment;
     private MapFragment mapFragment;
 
-    CallBack_userProtocol callBack = name -> showUserName(name);
+    CallBack_userProtocol callBack = new CallBack_userProtocol() {
+        @Override
+        public void sendLoc(double latitude, double longitude) {
+            mapFragment.zoom(latitude,longitude);
+        }
 
-    private void showUserName(String name) {
-        Double latitude = 32.085973341670496,longitude = 34.87092853235433;
-    }
+        @Override
+        public void showTop5(ArrayList<Player> players) {
+            mapFragment.setOnMap(players);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +42,14 @@ public class FinishingActivity extends AppCompatActivity {
         Intent previousIntent = getIntent();
         String score = previousIntent.getStringExtra(KEY_SCORE);
         score_LBL.setText("Your score is: " + score);
-//        getSupportFragmentManager().beginTransaction().add(R.id.upper_frame,listFragment).commit();
-//        getSupportFragmentManager().beginTransaction().add(R.id.lower_frame,mapFragment).commit();
     }
 
     private void initFragments() {
-//        listFragment = new ListFragment();
-//        listFragment.setCallback(callBack);
+        listFragment = new ListFragment();
+        listFragment.setCallback(callBack);
         mapFragment = new MapFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.upper_frame,listFragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.lower_frame,mapFragment).commit();
     }
 
     public void findViews(){
