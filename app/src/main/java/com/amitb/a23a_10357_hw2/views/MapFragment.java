@@ -41,16 +41,16 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     }
 
     public void zoom(double latitude, double longitude) {
-        LatLng rnd = new LatLng(latitude,longitude);
-        gMap.addMarker(new MarkerOptions().position(rnd));
-        CameraPosition cPos = new CameraPosition.Builder().target(rnd).zoom(12).build();
+        LatLng latLng = new LatLng(latitude,longitude);
+        gMap.addMarker(new MarkerOptions().position(latLng));
+        CameraPosition cPos = new CameraPosition.Builder().target(latLng).zoom(12).build();
         gMap.animateCamera(CameraUpdateFactory.newCameraPosition(cPos));
     }
 
     public void setOnMap(ArrayList<Player> players){
         for (Player p :players) {
-            LatLng rnd = new LatLng(p.getLatitude(),p.getLongitude());
-            gMap.addMarker(new MarkerOptions().position(rnd));
+            LatLng latLng = new LatLng(p.getLatitude(),p.getLongitude());
+            gMap.addMarker(new MarkerOptions().position(latLng));
         }
     }
 }

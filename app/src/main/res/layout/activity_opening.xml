@@ -90,6 +90,7 @@
             android:id="@+id/ET_name"
             android:layout_width="160dp"
             android:layout_height="match_parent"
+            android:textColor="@color/black"
             android:textAlignment="center"/>
 
         <com.google.android.material.button.MaterialButton
@@ -97,6 +98,7 @@
             android:layout_width="92dp"
             android:textSize="12dp"
             android:textStyle="bold"
+            android:textColor="@color/white"
             android:backgroundTint="@color/red_300"
             app:cornerRadius="16dp"
             android:layout_height="match_parent"

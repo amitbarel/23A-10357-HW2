@@ -2,9 +2,13 @@ package com.amitb.a23a_10357_hw2;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
@@ -26,19 +30,20 @@ import com.google.android.material.floatingactionbutton.ExtendedFloatingActionBu
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.gson.Gson;
 
-import java.util.Locale;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import im.delight.android.location.SimpleLocation;
 
 public class GameActivity extends AppCompatActivity {
 
     public static final String KEY_SPEED = "KEY_SPEED";
     public static final String KEY_MODE = "KEY_MODE";
     public static final String KEY_NAME = "KEY_NAME";
-
     private final int MULT = 3;
-
+    private SimpleLocation location;
+    private double loc_latitude,loc_longitude;
     private Vibrator v;
     private GameManager GM;
     private SuccessSound successSound;
@@ -65,12 +70,14 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        location = new SimpleLocation(this);
+        requestLocationPermission(location);
         currentSpot = 2;
         findViews();
         initGame();
         initViews();
         GM = new GameManager(Hearts.length);
-        MySPv.getInstance().clearAll();
+//        MySPv.getInstance().clearAll();
     }
 
     @Override
@@ -162,7 +169,6 @@ public class GameActivity extends AppCompatActivity {
         startGame();
     }
 
-
     private void slideLeft() {
         if (currentSpot > 0) {
             Cars[currentSpot].setVisibility(View.INVISIBLE);
@@ -178,7 +184,6 @@ public class GameActivity extends AppCompatActivity {
             currentSpot++;
         }
     }
-
 
     private void startGame() {
         startTime = System.currentTimeMillis();
@@ -260,15 +265,12 @@ public class GameActivity extends AppCompatActivity {
         int now = (int) ((System.currentTimeMillis() - startTime) / 1000);
         timer.cancel();
         int score = now * MULT;
-
-//        String name = getIntent().getExtras().getString(KEY_NAME);
-        // We want to save to sp
         String impGson = MySPv.getInstance().getString(MySPv.getInstance().getMyKey(), "");
         Records recs = new Gson().fromJson(impGson,Records.class);
         if (recs == null){
             recs = new Records();
         }
-        recs.getRecords().add(new Player().setName(playerName).setScore(score));
+        recs.getRecords().add(new Player().setName(playerName).setScore(score).setLocation(loc_latitude,loc_longitude));
         recs.sortList();
         String expGson = new Gson().toJson(recs);
         MySPv.getInstance().putString(MySPv.getInstance().getMyKey(),expGson);
@@ -276,4 +278,20 @@ public class GameActivity extends AppCompatActivity {
         startActivity(finishIntent);
         GameActivity.this.finish();
     }
+
+    private void requestLocationPermission(SimpleLocation location) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 101);
+        } else {
+            saveLocation(location);
+        }
+    }
+
+    private void saveLocation(SimpleLocation location) {
+        location.beginUpdates();
+        loc_latitude = location.getLatitude();
+        loc_longitude = location.getLongitude();
+    }
+
+
 }

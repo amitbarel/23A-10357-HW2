@@ -17,7 +17,7 @@ import com.amitb.a23a_10357_hw2.model.Records;
 import com.amitb.a23a_10357_hw2.utils.MySPv;
 import com.amitb.a23a_10357_hw2.utils.PlayerAdapter;
 import com.amitb.a23a_10357_hw2.R;
-import com.amitb.a23a_10357_hw2.interfaces.CallBack_userProtocol;
+import com.amitb.a23a_10357_hw2.interfaces.UserProtocolCallBack;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -26,20 +26,21 @@ public class ListFragment extends Fragment {
 
     private RecyclerView scoreRecycler;
 
-    CallBack_userProtocol callback = new CallBack_userProtocol() {
+    UserProtocolCallBack callback = new UserProtocolCallBack() {
         @Override
-        public void sendLoc(double latitude, double longitude) {
+        public void sendLocation(double latitude, double longitude) {
             if (callback != null)
-                callback.sendLoc(latitude, longitude);
+                callback.sendLocation(latitude, longitude);
         }
 
         @Override
-        public void showTop5(ArrayList<Player> players) {
-            callback.showTop5(players);
+        public void showAllLocations(ArrayList<Player> players) {
+            if (callback != null)
+                callback.showAllLocations(players);
         }
     };
 
-    public void setCallback(CallBack_userProtocol callback){
+    public void setCallback(UserProtocolCallBack callback){
         this.callback = callback;
     }
 
@@ -56,6 +57,7 @@ public class ListFragment extends Fragment {
         }
         Context context = getContext();
         PlayerAdapter playerAdapter = new PlayerAdapter(context,recs.getRecords());
+        playerAdapter.setRecordCallBack((player, position) -> callback.sendLocation(player.getLatitude(),player.getLongitude()));
         scoreRecycler.setLayoutManager(new LinearLayoutManager(context));
         scoreRecycler.setAdapter(playerAdapter);
         return view;

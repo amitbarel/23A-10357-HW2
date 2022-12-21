@@ -4,16 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.amitb.a23a_10357_hw2.interfaces.CallBack_userProtocol;
+import com.amitb.a23a_10357_hw2.interfaces.UserProtocolCallBack;
 import com.amitb.a23a_10357_hw2.model.Player;
 import com.amitb.a23a_10357_hw2.views.ListFragment;
 import com.amitb.a23a_10357_hw2.views.MapFragment;
-import com.google.android.material.button.MaterialButton;
 import com.google.android.material.imageview.ShapeableImageView;
 
 import java.util.ArrayList;
@@ -24,14 +19,14 @@ public class FinishingActivity extends AppCompatActivity {
     private MapFragment mapFragment;
     private ShapeableImageView returnIMG;
 
-    CallBack_userProtocol callBack = new CallBack_userProtocol() {
+    UserProtocolCallBack callBack = new UserProtocolCallBack() {
         @Override
-        public void sendLoc(double latitude, double longitude) {
+        public void sendLocation(double latitude, double longitude) {
             mapFragment.zoom(latitude,longitude);
         }
 
         @Override
-        public void showTop5(ArrayList<Player> players) {
+        public void showAllLocations(ArrayList<Player> players) {
             mapFragment.setOnMap(players);
         }
     };

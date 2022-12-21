@@ -34,16 +34,6 @@ public class MySPv {
         return preferences.getString(key,defValue);
     }
 
-    public void putInt(String key,int value){
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putInt(key,value);
-        editor.apply();
-    }
-
-    public int getInt(String key,int defValue){
-        return preferences.getInt(key,defValue);
-    }
-
     public String getMyKey(){
         return RECORDS;
     }
