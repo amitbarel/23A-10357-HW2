@@ -20,11 +20,6 @@ import java.util.ArrayList;
 
 public class FinishingActivity extends AppCompatActivity {
 
-    public static final String KEY_SCORE = "KEY_SCORE";
-    private TextView score_LBL;
-    private LinearLayout name_linear;
-    private EditText nameEnter;
-    private MaterialButton enterBTN;
     private ListFragment listFragment;
     private MapFragment mapFragment;
     private ShapeableImageView returnIMG;
@@ -47,17 +42,6 @@ public class FinishingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_finishing);
         initFragments();
         findViews();
-        Intent previousIntent = getIntent();
-        String score = previousIntent.getStringExtra(KEY_SCORE);
-        if (score != null){
-            score_LBL.setVisibility(View.VISIBLE);
-            score_LBL.setText("Your score is: " + score);
-        }
-        enterBTN.setOnClickListener(v->{
-            if (!nameEnter.getText().toString().equals("")){
-                name_linear.setVisibility(View.GONE);
-            }
-        });
         returnIMG.setOnClickListener(v->{
             Intent openingIntent = new Intent(this,OpeningActivity.class);
             startActivity(openingIntent);
@@ -74,10 +58,6 @@ public class FinishingActivity extends AppCompatActivity {
     }
 
     public void findViews(){
-        score_LBL = findViewById(R.id.text_score);
-        nameEnter = findViewById(R.id.ET_name);
-        enterBTN = findViewById(R.id.BTN_enterText);
-        name_linear = findViewById(R.id.LL_name);
         returnIMG = findViewById(R.id.IMG_return);
     }
 }

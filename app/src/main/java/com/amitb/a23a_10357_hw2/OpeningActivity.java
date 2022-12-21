@@ -5,6 +5,9 @@ import androidx.appcompat.widget.AppCompatImageView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ToggleButton;
 
 import com.bumptech.glide.Glide;
@@ -17,6 +20,9 @@ public class OpeningActivity extends AppCompatActivity {
     private MaterialButton sensors_BTN;
     private AppCompatImageView car_gif;
     private MaterialButton scoreList_BTN;
+    private LinearLayout name_LL;
+    private EditText nameEnter;
+    private MaterialButton enterBTN;
 
 
     @Override
@@ -28,6 +34,13 @@ public class OpeningActivity extends AppCompatActivity {
         arrows_BTN.setOnClickListener(view -> startArrows());
         sensors_BTN.setOnClickListener(view -> startSensors());
         scoreList_BTN.setOnClickListener(view -> goToScoreList());
+        enterBTN.setOnClickListener(view -> {
+            if (!nameEnter.getText().toString().equals("")){
+                name_LL.setVisibility(View.GONE);
+                sensors_BTN.setEnabled(true);
+                arrows_BTN.setEnabled(true);
+            }
+        });
     }
 
     @Override
@@ -49,6 +62,7 @@ public class OpeningActivity extends AppCompatActivity {
         Intent arrowsIntent = new Intent(this,GameActivity.class);
         arrowsIntent.putExtra(GameActivity.KEY_MODE,arrows_BTN.getText().toString());
         arrowsIntent.putExtra(GameActivity.KEY_SPEED,speedTGL.getText());
+        arrowsIntent.putExtra(GameActivity.KEY_NAME,nameEnter.getText().toString());
         startActivity(arrowsIntent);
         finish();
     }
@@ -57,6 +71,7 @@ public class OpeningActivity extends AppCompatActivity {
         Intent sensorsIntent = new Intent(this,GameActivity.class);
         sensorsIntent.putExtra(GameActivity.KEY_MODE,sensors_BTN.getText().toString());
         sensorsIntent.putExtra(GameActivity.KEY_SPEED,speedTGL.getText());
+        sensorsIntent.putExtra(GameActivity.KEY_NAME,nameEnter.getText().toString());
         startActivity(sensorsIntent);
         finish();
     }
@@ -73,5 +88,9 @@ public class OpeningActivity extends AppCompatActivity {
         arrows_BTN = findViewById(R.id.opening_BTN_arrows);
         sensors_BTN = findViewById(R.id.opening_BTN_sensors);
         scoreList_BTN = findViewById(R.id.opening_BTN_records);
+        name_LL = findViewById(R.id.LL_name);
+        nameEnter = findViewById(R.id.ET_name);
+        enterBTN = findViewById(R.id.BTN_enterText);
+
     }
 }

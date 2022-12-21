@@ -8,6 +8,7 @@ public class MySPv {
     private static MySPv instance = null;
     private SharedPreferences preferences;
     private static final String DB_FILE = "DB_FILE";
+    private static final String RECORDS = "RECORD_LIST";
 
     private MySPv(Context context){
         this.preferences = context.getSharedPreferences(DB_FILE, Context.MODE_PRIVATE);
@@ -41,6 +42,16 @@ public class MySPv {
 
     public int getInt(String key,int defValue){
         return preferences.getInt(key,defValue);
+    }
+
+    public String getMyKey(){
+        return RECORDS;
+    }
+
+    public void clearAll(){
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.apply();
     }
 
 }

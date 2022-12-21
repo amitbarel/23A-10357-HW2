@@ -8,14 +8,15 @@ public class Records {
     public Records() {
     }
 
-
-    public ArrayList<Player> getSongs() {
+    public ArrayList<Player> getRecords() {
         return players;
     }
 
-    public Records setSongs(ArrayList<Player> songs) {
-        this.players = songs;
-        return this;
-    }
 
+    public void sortList() {
+        players.sort((p1,p2) -> p2.getScore()-p1.getScore());
+        if (players.size() > 5){
+            players.remove(5);
+        }
+    }
 }
