@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,12 +12,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.amitb.a23a_10357_hw2.Player;
-import com.amitb.a23a_10357_hw2.PlayerAdapter;
+import com.amitb.a23a_10357_hw2.model.Player;
+import com.amitb.a23a_10357_hw2.utils.PlayerAdapter;
 import com.amitb.a23a_10357_hw2.R;
 import com.amitb.a23a_10357_hw2.interfaces.CallBack_userProtocol;
 import com.amitb.a23a_10357_hw2.utils.DataManager;
-import com.google.android.material.textview.MaterialTextView;
 
 import java.util.ArrayList;
 

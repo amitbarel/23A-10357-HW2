@@ -1,6 +1,6 @@
 package com.amitb.a23a_10357_hw2.interfaces;
 
-import com.amitb.a23a_10357_hw2.Player;
+import com.amitb.a23a_10357_hw2.model.Player;
 
 import java.util.ArrayList;
 

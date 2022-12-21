@@ -16,6 +16,7 @@ public class OpeningActivity extends AppCompatActivity {
     private MaterialButton arrows_BTN;
     private MaterialButton sensors_BTN;
     private AppCompatImageView car_gif;
+    private MaterialButton scoreList_BTN;
 
 
     @Override
@@ -26,6 +27,7 @@ public class OpeningActivity extends AppCompatActivity {
         initViews();
         arrows_BTN.setOnClickListener(view -> startArrows());
         sensors_BTN.setOnClickListener(view -> startSensors());
+        scoreList_BTN.setOnClickListener(view -> goToScoreList());
     }
 
     @Override
@@ -59,10 +61,17 @@ public class OpeningActivity extends AppCompatActivity {
         finish();
     }
 
+    private void goToScoreList(){
+        Intent sensorsIntent = new Intent(this,FinishingActivity.class);
+        startActivity(sensorsIntent);
+        finish();
+    }
+
     private void findViews() {
         car_gif = findViewById(R.id.opening_gif);
         speedTGL = findViewById(R.id.opening_toggle_speed);
         arrows_BTN = findViewById(R.id.opening_BTN_arrows);
         sensors_BTN = findViewById(R.id.opening_BTN_sensors);
+        scoreList_BTN = findViewById(R.id.opening_BTN_records);
     }
 }

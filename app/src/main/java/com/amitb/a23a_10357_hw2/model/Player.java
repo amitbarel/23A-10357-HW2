@@ -1,4 +1,4 @@
-package com.amitb.a23a_10357_hw2;
+package com.amitb.a23a_10357_hw2.model;
 
 public class Player {
     private String name;

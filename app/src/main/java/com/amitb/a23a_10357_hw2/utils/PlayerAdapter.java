@@ -1,4 +1,4 @@
-package com.amitb.a23a_10357_hw2;
+package com.amitb.a23a_10357_hw2.utils;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,7 +8,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amitb.a23a_10357_hw2.R;
 import com.amitb.a23a_10357_hw2.interfaces.RecordCallBack;
+import com.amitb.a23a_10357_hw2.model.Player;
 import com.google.android.material.textview.MaterialTextView;
 
 import java.util.ArrayList;
