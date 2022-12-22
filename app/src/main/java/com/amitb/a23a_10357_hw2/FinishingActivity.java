@@ -24,11 +24,6 @@ public class FinishingActivity extends AppCompatActivity {
         public void sendLocation(double latitude, double longitude) {
             mapFragment.zoom(latitude,longitude);
         }
-
-        @Override
-        public void showAllLocations(ArrayList<Player> players) {
-            mapFragment.setOnMap(players);
-        }
     };
 
     @Override

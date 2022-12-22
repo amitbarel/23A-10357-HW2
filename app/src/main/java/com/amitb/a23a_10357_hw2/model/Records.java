@@ -15,8 +15,8 @@ public class Records {
 
     public void sortList() {
         players.sort((p1,p2) -> p2.getScore()-p1.getScore());
-        if (players.size() > 5){
-            players.remove(5);
+        if (players.size() > 10){
+            players.remove(10);
         }
     }
 }

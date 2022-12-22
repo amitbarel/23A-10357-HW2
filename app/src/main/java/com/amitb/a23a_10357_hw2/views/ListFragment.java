@@ -26,24 +26,11 @@ public class ListFragment extends Fragment {
 
     private RecyclerView scoreRecycler;
 
-    UserProtocolCallBack callback = new UserProtocolCallBack() {
-        @Override
-        public void sendLocation(double latitude, double longitude) {
-            if (callback != null)
-                callback.sendLocation(latitude, longitude);
-        }
-
-        @Override
-        public void showAllLocations(ArrayList<Player> players) {
-            if (callback != null)
-                callback.showAllLocations(players);
-        }
-    };
+    private UserProtocolCallBack callback;
 
     public void setCallback(UserProtocolCallBack callback){
         this.callback = callback;
     }
-
 
     @Nullable
     @Override

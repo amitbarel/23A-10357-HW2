@@ -3,9 +3,11 @@ package com.amitb.a23a_10357_hw2;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ToggleButton;
@@ -37,6 +39,8 @@ public class OpeningActivity extends AppCompatActivity {
         enterBTN.setOnClickListener(view -> {
             if (!nameEnter.getText().toString().equals("")){
                 name_LL.setVisibility(View.GONE);
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
                 sensors_BTN.setEnabled(true);
                 arrows_BTN.setEnabled(true);
             }
