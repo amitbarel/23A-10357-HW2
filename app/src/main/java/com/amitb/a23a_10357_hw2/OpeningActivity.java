@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.bumptech.glide.Glide;
@@ -43,6 +44,9 @@ public class OpeningActivity extends AppCompatActivity {
                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
                 sensors_BTN.setEnabled(true);
                 arrows_BTN.setEnabled(true);
+            }
+            else{
+                Toast.makeText(this, "Let us know your name!", Toast.LENGTH_SHORT).show();
             }
         });
     }
