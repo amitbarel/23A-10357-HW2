@@ -77,7 +77,6 @@ public class GameActivity extends AppCompatActivity {
         initGame();
         initViews();
         GM = new GameManager(Hearts.length);
-//        MySPv.getInstance().clearAll();
     }
 
     @Override
